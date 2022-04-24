@@ -11,7 +11,7 @@ volatile unsigned long time_milli;
 void inicializa_timer(void){
   
   TCCR2A = 0x00;
-  TCCR2B |= (1<<CS01);
+  TCCR2B |= (1<<CS21);
   TCNT2 = 56;
   TIMSK2 |= (1<<TOIE2);
   timer_millis = 0;
@@ -45,9 +45,11 @@ int main( void )
   cli();
   inicializa_timer();
   setup_init();
+  
+  unsigned long timer;
   sei();
 
-  unsigned long timer;
+  
   timer = whatsTime();
   Serial.println(timer);
 
