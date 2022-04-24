@@ -35,7 +35,7 @@ unsigned long whatsTime(void){
   return time_now;
 }
 
-void seturp(void){
+void setup_init(void){
   Serial.begin(9600);
 }
 
@@ -44,9 +44,14 @@ int main( void )
 {
   cli();
   inicializa_timer();
-  setup());
+  setup_init();
   sei();
 
+  unsigned long timer;
+  timer = whatsTime();
+  Serial.println(timer);
+
+  
   
 
 }
