@@ -28,7 +28,6 @@ ISR (TIMER2_OVF_vect)
 unsigned long whatsTime(void){
   unsigned long aux_millis;
 
-  // Ensure this cannot be disrupted
   ATOMIC_BLOCK(ATOMIC_FORCEON) {
     aux_millis = count_millis;
   }
@@ -37,15 +36,14 @@ unsigned long whatsTime(void){
 
 void setup_init(void){
   Serial.begin(9600);
+  inicializa_timer();
 }
 
 
 int main( void )
 {
-  cli();
-  inicializa_timer();
+  cli();  
   setup_init();
-  
   unsigned long timer;
   sei();
 
