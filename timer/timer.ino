@@ -6,7 +6,7 @@
 
 #define FOSC 16000000UL
 
-volatile unsigned long time_milli;
+volatile unsigned long count_millis;
 
 void inicializa_timer(void){
   
@@ -21,18 +21,18 @@ void inicializa_timer(void){
 ISR (TIMER2_OVF_vect)
 {      
    TCNT2   =    56;
-   timer_millis ++;
+   count_millis ++;
    
 }
 
 unsigned long whatsTime(void){
-  unsigned long time_now;
+  unsigned long aux_millis;
 
   // Ensure this cannot be disrupted
   ATOMIC_BLOCK(ATOMIC_FORCEON) {
-    time_now = timer_millis;
+    aux_millis = count_millis;
   }
-  return time_now;
+  return aux_millis;
 }
 
 void setup_init(void){
