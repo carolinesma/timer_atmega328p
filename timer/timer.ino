@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <avr/interrupt.h>
-#include <util/delay.h>
-
 
 #define FOSC 16000000UL
 
