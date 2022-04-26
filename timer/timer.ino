@@ -10,7 +10,7 @@ volatile unsigned long count_millis;
 
 ts = (TOP + 1) x preescaler/ Fosc
 ts = (255 + 1 - 56) x 8/16mHz
-ts = 1000s
+ts = 0,1 ms
 
 */
 void inicializa_timer(void){
@@ -23,7 +23,7 @@ void inicializa_timer(void){
  
 }
 
-/* Chamada de Interurpçação para contabilizar os ms a cada estouro*/
+/* Chamada de Interurpçação para contabilizar os 0,1ms a cada estouro*/
 ISR (TIMER2_OVF_vect)
 {      
    TCNT2   =    56;
